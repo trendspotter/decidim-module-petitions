@@ -1,0 +1,168 @@
+---
+cs:
+  decidim:
+    components:
+      petitions:
+        name: Petice
+        settings:
+          global:
+            credential_issuer_api_pass: Heslo API vydavatele pověření
+            credential_issuer_api_url: URL API vydavatele pověření
+            credential_issuer_api_user: Uživatel API vydavatele pověření
+            dashboard_api_url: Barcelona Now API URL
+            petitions_api_pass: API heslo Petice
+            petitions_api_url: API URL Petice
+            petitions_api_user: API uživatel Petice
+          step:
+            announcement: Announcement
+            votes_enabled: Votes enabled?
+    pages:
+      home:
+        statistics:
+          petitions_count: Petitions
+    petitions:
+      actions:
+        activate: Open petition
+        back: Return to petitions list
+        close:
+          assert_count: Assert count with Zenroom
+          count_petition: Count with Petitions API
+          tally_petition: Tally with Petitions API
+        confirm_close: Are you sure to close this petition?
+        confirm_destroy: Are you sure to destroy this petition?
+        confirm_open: |
+          Are you sure to open this petition?
+          You'll need to also create the petition on the diferent DECODE APIs.
+          Please check that you have configured correctly all the URL for these services.
+          This action is irreversible, to try again you need to change the petition title.
+        count: Count petition with Petitions API
+        deactivate: Close petition
+        destroy: Destroy
+        edit: Edit
+        get: Get petition data from Petitions API
+        new: New
+        open:
+          barcelona_now_dashboard: Open DECODE Barcelona Now Dashboard API
+          credential_issuer: Open DECODE Credential Issuer API
+          create_petition: Open DECODE Petitions API
+        title: Actions
+      admin:
+        model:
+          components:
+            description: Description
+            json_attribute_info: JSON Attribute Info for Credential Issuer. The first
+              of each one of these is going to be used for Petitions API setup.
+            json_attribute_info_optional: JSON Attribute Info Optional for Credential
+              Issuer
+            json_schema: JSON Schema
+            summary: Summary
+        petitions:
+          activate:
+            errors:
+              barcelona_now: There was an error with the setup. Barcelona Now response
+                was %{status_code}.
+              credential_issuer: There was an error with the setup. Credential Issuer
+                response was %{status_code}.
+              petitions: There was an error with the setup. Petitions API response
+                was %{status_code}.
+            success: The petition was opened successfully
+          create:
+            invalid: The petition is invalid
+            success: The petition was created successfully
+          deactivate:
+            success: The petition was closed successfully
+          decode:
+            invalid:
+              400: The request to petitions API is malformed, please check the petitions API documentation
+              401: Not authorized to make use of petitions API
+              404: Petition not found on external petitions API
+              409: Petition already open or conflict on the petition ID, if is a new petition please recreate the petition
+              422: Can't process the petition, please check the petition's configuration
+              500: API Endpoint has a internal server error
+              debug: "Response: %{response}"
+            duplicated:
+              barcelona_now_dashboard: Seems like there's already a petition with
+                that data on Barcelona Now Dashboard. Check logs.
+              credential_issuer: Seems like there's already a petition with that data
+                on Credential Issuer. Check logs.
+              petitions: Seems like there's already a petition with that data on Petitions
+                API. Check logs.
+            errors:
+              credential_issuer: There was an error with the request to Credential
+                Issuer. Please check the server logs for details.
+              tally: There was an error with the request to the server to Tally. Please
+                check the server logs for details.
+            success:
+              assert_count: Count successfully done
+              barcelona_now_dashboard: The petition was successfully created on Barcelona
+                Now API
+              count_petition: Count successfully done
+              credential_issuer: The petition was successfully created on Credential
+                Issuer API
+              create_petition: The petition was successfully created on Petitions API
+              tally_petition: Tally successfully done
+          destroy:
+            success: The petition was deleted successfully
+          edit:
+            save: Save
+            title: Edit Petition
+          index:
+            title: Petitions
+          new:
+            create: Create
+            title: New Petition
+          update:
+            success: The petition was updated successfully
+            invalid: The petition is invalid
+      models:
+        petition:
+          fields:
+            closing_date: Closing date
+            signatures: Signatures
+            title: Title
+      petitions:
+        count:
+          petitions_count: "%{count} Petitions"
+        petition:
+          description: Description
+          open_expo: Sign with Expo
+          open_wallet: Sign with Decode App
+          participate: Participate
+          summary: Summary
+          votes: Signatures
+        show:
+          card:
+            instructions:
+              apps_html: |
+                To access this petition you'll need the app from %{link_google_play} %{link_app_store}
+              read_more_html:
+                <a href="https://tools.decodeproject.eu/app/">Read more about the app</a>
+          instructions_mini_html: |
+            <p>In order to sign this petition you must obtain a credential and you must also have the DECODE application installed on your mobile device in <a href="https://play.google.com/store/apps/details?id=com.dribia.decodeapp">Google Play</a> or the <a href="https://apps.apple.com/es/app/decode-app/id1451694589">App Store</a>.</p>
+          instructions_full_html: |
+            <p>To sign the petition you can do so:</p>
+            <ul>
+              <li>Visiting the petition page with a browser on your mobile device.</li>
+              <li>Scanning with a QR code application.</li>
+            </ul>
+            <h2>How to start using the DECODE App</h2>
+            <ol>
+              <li>Download the DECODE App - Search for "DECODE App” from Dribia Data Research in <a href="https://play.google.com/store/apps/details?id=com.dribia.decodeapp">Google Play</a> or <a href="https://apps.apple.com/es/app/decode-app/id1451694589">App Store</a></li>
+              <li>Create your PIN</li>
+              <li>Optional: Add your personal data on the app</li>
+              <li>Click on "Sign a DDDC petition"</li>
+              <li>Click on “Activate application through QR”</li>
+              <li>Scan the QR</li>
+              <li>Enter the credential to participate</li>
+              <li>Optional: Choose what data you want to share and click on verify</li>
+              <li>Input identification code and Click on “Get certificate”</li>
+              <li>Sign a petition</li>
+              <li>Explore the results to "Go to BarcelonaNow"</li>
+            </ol>
+            <p> To obtain more information on the entire process and the DECODE project, please visit <a href="http://app.decodeproject.eu">http://app.decodeproject.eu</a>.</p>
+          read_more: Read more
+      services:
+        title: DECODE services
+      states:
+        closed: Closed
+        opened: Open
