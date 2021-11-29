@@ -14,33 +14,33 @@ cs:
             petitions_api_url: API URL Petice
             petitions_api_user: API uživatel Petice
           step:
-            announcement: Announcement
-            votes_enabled: Votes enabled?
+            announcement: Oznámení
+            votes_enabled: Hlasování povoleno?
     pages:
       home:
         statistics:
-          petitions_count: Petitions
+          petitions_count: Petice
     petitions:
       actions:
-        activate: Open petition
-        back: Return to petitions list
+        activate: Otevřít petici
+        back: Zpět na seznam petic
         close:
           assert_count: Assert count with Zenroom
           count_petition: Count with Petitions API
           tally_petition: Tally with Petitions API
-        confirm_close: Are you sure to close this petition?
-        confirm_destroy: Are you sure to destroy this petition?
+        confirm_close: Opravdu chcete tuto petici uzavřít?
+        confirm_destroy: Opravdu chcete tuto petici zničit?
         confirm_open: |
-          Are you sure to open this petition?
-          You'll need to also create the petition on the diferent DECODE APIs.
-          Please check that you have configured correctly all the URL for these services.
-          This action is irreversible, to try again you need to change the petition title.
-        count: Count petition with Petitions API
-        deactivate: Close petition
-        destroy: Destroy
-        edit: Edit
-        get: Get petition data from Petitions API
-        new: New
+          Určitě chcete otevřít tuto petici?
+          Musíte také vytvořit petici na různých rozhraních API DECODE.
+          Zkontrolujte, zda jste správně nakonfigurovali všechny adresy URL pro tyto služby.
+          Tato akce je nevratná, pro další pokus je třeba změnit název petice.
+        count: Spočítejte petici pomocí rozhraní API pro petice
+        deactivate: Zavřít petici
+        destroy: Zničit
+        edit: Upravit
+        get: Získat údaje z rozhraní API pro petice
+        new: Nová
         open:
           barcelona_now_dashboard: Open DECODE Barcelona Now Dashboard API
           credential_issuer: Open DECODE Credential Issuer API
